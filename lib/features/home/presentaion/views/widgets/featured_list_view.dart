@@ -7,7 +7,7 @@ class FeaturedBooksListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 24),
+      padding: const EdgeInsets.only(left: 30),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .3,
         child: ListView.builder(
