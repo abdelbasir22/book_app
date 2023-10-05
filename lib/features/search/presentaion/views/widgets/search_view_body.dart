@@ -1,50 +1,38 @@
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/presentaion/views/widgets/book_list_view_item.dart';
 import 'package:bookly_app/features/search/presentaion/views/widgets/custom_search_text_filed.dart';
+import 'package:bookly_app/features/search/presentaion/views/widgets/search_result_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(),
-          SizedBox(
+          IconButton(
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back)),
+          const CustomSearchTextField(),
+          const SizedBox(
             height: 20,
           ),
-          Text(
+          const Text(
             'Search Result',
             style: Styles.textStyle18,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Expanded(child: SearchResultListView()),
+          const Expanded(child: SearchResultListView()),
         ],
       ),
-    );
-  }
-}
-
-class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: EdgeInsets.zero,
-      itemCount: 10,
-      itemBuilder: (context, index) {
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          child: BookListViewItem(),
-        );
-      },
     );
   }
 }
