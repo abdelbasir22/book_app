@@ -1,11 +1,14 @@
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/book_rating.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/books_action.dart';
 import 'package:bookly_app/features/home/presentaion/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BooksDetailsSection extends StatelessWidget {
-  const BooksDetailsSection({super.key});
+  const BooksDetailsSection({super.key, required this.bookModel});
+
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +18,17 @@ class BooksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: const CustomBookImage(
-            imageUrl: 'https://images.app.goo.gl/XvQKoPZarf9GBj3MA',
+          child: CustomBookImage(
+            imageUrl: bookModel.volumeInfo?.imageLinks?.thumbnail ?? '',
           ),
         ),
         const SizedBox(
           height: 42,
         ),
-        const Text(
-          'The Jungle Book',
+        Text(
+          bookModel.volumeInfo!.title!,
           style: Styles.textStyle30,
+          textAlign: TextAlign.center,
         ),
         const SizedBox(
           height: 6,
@@ -32,17 +36,17 @@ class BooksDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            'Rudyard Kipling',
+            bookModel.volumeInfo!.authors?[0] ?? '',
             style: Styles.textStyle18.copyWith(fontStyle: FontStyle.italic),
           ),
         ),
         const SizedBox(
           height: 18,
         ),
-        const BookRating(
+        BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          rating: 4,
-          count: 222,
+          rating: bookModel.volumeInfo!.averageRating ?? 0,
+          count: bookModel.volumeInfo!.ratingsCount ?? 0,
         ),
         const SizedBox(
           height: 37,

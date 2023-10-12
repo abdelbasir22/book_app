@@ -13,7 +13,7 @@ class BooksAction extends StatelessWidget {
           Expanded(
             child: CustomBotton(
               fontSize: 18,
-              title: '19.99 E.P',
+              title: 'Free',
               backGroundColor: Colors.white,
               textColor: Colors.black,
               borderRadius: BorderRadius.only(
@@ -24,7 +24,7 @@ class BooksAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomBotton(
-              title: 'Free preview',
+              title: 'preview',
               backGroundColor: Color(0xffEF8262),
               textColor: Colors.white,
               borderRadius: BorderRadius.only(

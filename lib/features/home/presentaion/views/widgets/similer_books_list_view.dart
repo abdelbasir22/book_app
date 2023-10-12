@@ -16,12 +16,16 @@ class SimilerBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .16,
             child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
+                itemCount: state.books.length,
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: CustomBookImage(
-                      imageUrl: 'https://images.app.goo.gl/XvQKoPZarf9GBj3MA',
+                      imageUrl: state
+                              .books[index].volumeInfo!.imageLinks?.thumbnail ??
+                          '',
                     ),
                   );
                 }),
