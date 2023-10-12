@@ -22,13 +22,15 @@ class FeaturedBooksListView extends StatelessWidget {
                 itemCount: state.books.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  final book = state.books[index];
-                  final thumbnailUrl = book.volumeInfo?.imageLinks?.thumbnail;
-                  final imageUrl = thumbnailUrl ?? 'any_placeholder_image_';
+                  // final book = state.books[index];
+                  // final thumbnailUrl = book.volumeInfo?.imageLinks?.thumbnail;
+                  // final imageUrl = thumbnailUrl ?? 'any_placeholder_image_';
 
                   return Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: CustomBookImage(imageUrl: imageUrl),
+                    child: CustomBookImage(
+                        imageUrl: state
+                            .books[index].volumeInfo!.imageLinks!.thumbnail!),
                   );
                 },
               ),
