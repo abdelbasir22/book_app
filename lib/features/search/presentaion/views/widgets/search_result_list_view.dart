@@ -1,8 +1,10 @@
-import 'package:bookly_app/features/home/presentaion/views/widgets/book_list_view_item.dart';
+import 'package:bookly_app/features/home/presentaion/views/widgets/newest_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultListView extends StatelessWidget {
-  const SearchResultListView({super.key});
+  const SearchResultListView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +14,7 @@ class SearchResultListView extends StatelessWidget {
       itemBuilder: (context, index) {
         return const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
-          //child: BookListViewItem(),
-          child: Text('data'),
+          child: NewestBooksListView(),
         );
       },
     );
